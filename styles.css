@@ -1,0 +1,344 @@
+/* =========================
+   Fonts
+   ========================= */
+
+@font-face {
+  font-family: "Junicode";
+  src: url("fonts/Junicode-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Junicode";
+  src: url("fonts/Junicode-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Junicode";
+  src: url("fonts/Junicode-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Junicode Condensed";
+  src: url("fonts/Junicode-RegularCondensed.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Junicode Condensed";
+  src: url("fonts/Junicode-ItalicCondensed.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Junicode Condensed";
+  src: url("fonts/Junicode-BoldCondensed.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* =========================
+   Variables
+   ========================= */
+
+:root {
+  --serif: "Junicode", Georgia, "Times New Roman", serif;
+  --serif-condensed: "Junicode Condensed", Georgia, serif;
+  --text-color: #1341a5;
+  --accent-color: #ff00c8;
+  --page-padding: 40px;
+}
+
+/* =========================
+   Reset / Base
+   ========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--text-color);
+  background: #fff;
+  font-feature-settings: "liga", "kern", "onum";
+}
+
+strong {
+  font-weight: 700;
+}
+
+em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* =========================
+   Header
+   ========================= */
+
+.site-header {
+  font-family: var(--serif-condensed);
+  font-weight: 700;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 24px var(--page-padding);
+  font-size: 36px;
+}
+
+.site-header div:nth-child(2) {
+  text-align: center;
+}
+
+.site-header div:nth-child(3) {
+  text-align: right;
+}
+
+/* =========================
+   Year
+   ========================= */
+
+.year {
+  padding: var(--page-padding);
+}
+
+.year h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+/* =========================
+   Rule
+   ========================= */
+
+hr {
+  border: none;
+  border-top: 5px dotted var(--accent-color);
+  margin: 0 var(--page-padding);
+  opacity: 0.6;
+}
+
+/* =========================
+   Project layout
+   ========================= */
+
+.project {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 40px;
+  padding: var(--page-padding);
+  align-items: start;
+}
+
+/* FORCE REGULAR TEXT */
+.project-text {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.4;
+  max-width: 60ch;
+}
+
+
+/* FORCE ITALIC WITHOUT BOLD */
+.project-text em {
+  font-size: 20px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* FORCE REGULAR TEXT */
+.project-text02 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.4;
+  max-width: 60ch;
+  text-align:center
+
+  
+}
+
+
+/* FORCE ITALIC WITHOUT BOLD */
+.project-text02 em {
+  font-size: 20px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  text-align: center
+}
+
+/* =========================
+   Images
+   ========================= */
+
+.project-image {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0; /* handled per image */
+}
+
+.project-image img {
+  display: block;
+  height: auto;
+  margin-bottom: 20px;
+  cursor: zoom-in;
+  border: 0;
+}
+
+/* Small images side-by-side */
+.project-image img.small {
+  margin-right: 20px;
+}
+
+/* Clear left for every odd small image to allow max 2 per row */
+.project-image img.small:nth-of-type(2n+1) {
+  clear: left;
+}
+
+/* Remove right margin on every second small image */
+.project-image img.small:nth-of-type(2n) {
+  margin-right: 0;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(201, 11, 166, 0.159);
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 999999;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  cursor: zoom-out;
+}
+
+
+/* =========================
+   Responsive
+   ========================= */
+
+@media (max-width: 700px) {
+  :root {
+    --page-padding: 24px;
+  }
+
+  .project {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .site-header {
+    grid-template-columns: 1fr;
+    row-gap: 6px;
+    font-size: 22px;
+  }
+
+  .site-header div {
+    text-align: left;
+  }
+
+  /* small images full width on mobile */
+  .project-image img.small {
+    width: 100% !important;
+    margin-right: 0;
+    clear: none;
+  }
+}
+
+/* =========================
+   Prevent scroll jump (CSS-only) 
+   ========================= */
+
+html:target {
+  scroll-behavior: auto;
+}
+
+/* =========================
+   Anchor hash scroll fix
+   ========================= */
+
+.project {
+  scroll-margin-top: 120px; /* adjust to match your header height */
+}
+
+/* ==============================
+   Mobile / small screen adjustments
+   ============================== */
+@media (max-width: 768px) {
+  
+  /* General page padding */
+  body {
+    padding: 0 1rem;
+  }
+
+  /* Header: stack items vertically */
+  .site-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .site-header div {
+    width: 100%;
+  }
+
+  /* Project sections */
+  .project {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Project text */
+  .project-text {
+    width: 100%;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  /* Images scale properly */
+  .project-image img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Lightbox adjustments */
+  .lightbox img {
+    max-width: 95vw;
+    max-height: 90vh;
+  }
+
+  /* Home page single image */
+  .home-single img {
+    max-width: 100%;
+    max-height: 50vh;
+  }
+}
